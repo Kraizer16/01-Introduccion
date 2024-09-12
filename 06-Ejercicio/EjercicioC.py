@@ -8,6 +8,3 @@ for i in range(n):
     if pal.startswith(pre):
         cpre += 1
 print (cpre)
-
-
-
