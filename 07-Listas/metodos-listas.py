@@ -49,3 +49,15 @@ print(lista.count(10))
 lista = " 1 , 2 , 3 , 4 , 5 "
 print(lista.split(","))
 print(lista.split(",")[3])
+
+#del
+lista = [10, 10, 40, 30, 35, 30, 60, 10]
+del(lista[3]) # borra la posicion de la lista 
+print(lista)
+
+#limpiar listas
+lista.clear()
+print(lista)
+print(type(lista))
+
+# del lista # Elimina la variable del programa

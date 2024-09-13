@@ -36,9 +36,4 @@ for i in range(n):
          case _:
           pass
 
-
-
-
-
-
 imprimeLista(lstVocales)
