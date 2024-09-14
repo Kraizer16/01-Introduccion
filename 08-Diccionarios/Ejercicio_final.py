@@ -1,5 +1,5 @@
 def juicio(definitiva):
-   if definitiva > 60:
+   if definitiva >= 60:
       return True
    else:
       return False
@@ -17,16 +17,19 @@ for i in range(n):
         break
     else:
      dDatos["Nombre"] = input("Nombre? \n")
-     dDatos["Nota1"] = int(input("Nota1? (1 - 5) \n"))
+     dDatos["Nota1"] = int(input("Nota1? (0 - 100) \n"))
      dDatos["Nota2"] = int(input("Nota2? (1 - 5) \n"))
      dDatos["Nota3"] = int(input("Nota3? (1 - 5) \n"))
-     dDatos["Definitva"] = (dDatos["Nota1"] * 0.30) + (dDatos["Nota2"] * 0.30) + (dDatos["Nota3"] * 0,40)
+     dDatos["Definitiva"] = int(f"{(dDatos["Nota1"] * 0.30) + (dDatos["Nota2"] * 0.30) + (dDatos["Nota3"] * 0.40):.0f}")
+     Estudiantes[codigo] = dDatos
 
-Estudiantes[codigo] = dDatos
-if juicio(dDatos["Definitva"]):
-   print("El estudiante ha aprobado")
-else:
-   print("El estudiante ha desaprobado")
+
+print(Estudiantes)
+for k in Estudiantes.keys():
+ if juicio(Estudiantes[k]["Definitiva"]):
+    print("El estudiante: ", Estudiantes[k]["Nombre"], " ha aprobado")
+ else:
+    print("El estudiante", Estudiantes[k]["Nombre"], " ha desaprobado")
 
 
 
