@@ -17,10 +17,10 @@ for i in range(n):
         break
     else:
      dDatos["Nombre"] = input("Nombre? \n")
-     dDatos["Nota1"] = int(input("Nota1? (0 - 100) \n"))
-     dDatos["Nota2"] = int(input("Nota2? (1 - 5) \n"))
-     dDatos["Nota3"] = int(input("Nota3? (1 - 5) \n"))
-     dDatos["Definitiva"] = int(f"{(dDatos["Nota1"] * 0.30) + (dDatos["Nota2"] * 0.30) + (dDatos["Nota3"] * 0.40):.0f}")
+     dDatos["Nota1"] = float(input("Nota1? (0 - 100) \n"))
+     dDatos["Nota2"] = float(input("Nota2? (1 - 5) \n"))
+     dDatos["Nota3"] = float(input("Nota3? (1 - 5) \n"))
+     dDatos["Definitiva"] = float(dDatos["Nota1"] * 0.30) + (dDatos["Nota2"] * 0.30) + (dDatos["Nota3"] * 0.40)
      Estudiantes[codigo] = dDatos
 
 
