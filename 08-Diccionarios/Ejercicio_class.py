@@ -1,7 +1,6 @@
 from os import wait
 from turtle import clearscreen
 
-import keyring
 
 
 def menu():
