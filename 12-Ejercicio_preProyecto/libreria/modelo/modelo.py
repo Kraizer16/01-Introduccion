@@ -1,15 +1,20 @@
-import json
-import pprint
+#import pprint
 
-def guardar(lib):
-    with open("10-Archivos/libreria.json", "w") as fd:
-        json.dump(lib, fd)
-    
-    if not fd.closed:
-        fd.close()
+"""
+libreria = {
+    codigo1(str): {
+        titulo:(str)
+        autor:(str)
+        precio:int   
+    },
 
-
-
+    codigo2(str): {
+        titulo:(str)
+        autor:(str)
+        precio:int  
+}
+"""
+from persistencia.persistencia import guardar
 
 def leerPrecio():
     while True:
@@ -57,7 +62,7 @@ def leerCodigo():
 
 
 
-def Insertar(lib):
+def Insertar(lib, arch):
     print("\n\n**1. INSERTAR ***")
 
     cod = leerCodigo()
@@ -74,11 +79,11 @@ def Insertar(lib):
 
         lib[cod] = datlib
 
-        pprint.pprint(lib)
-
+        # pprint.pprint(lib)
         lib = dict(sorted(lib.items()))
+        # pprint.pprint(lib)
 
-        pprint.pprint(lib)
+        guardar(lib, arch)
 
     else:
         print("El código ya existe en la librería.")
@@ -86,56 +91,19 @@ def Insertar(lib):
     input("Presione cualquier tecla para volver al menu...")
     return lib
 
-def Consultar():
+def Consultar(lib):
     print("\n\n**2. CONSULTAR ***")
+
+    cod = input("\nCódigo del libro? ")
+
+    if cod in lib:
+        print("-> Código", cod)
+
+        print(f"-> Titulo: {lib[cod]['Titulo']}")
+        print(f"-> Autor: {lib[cod]['Autor']}")
+        print(f"-> Precio: ${lib[cod]['Precio']:,.0f}")
+    else:
+        print(">>> Error. El codigo del libro no existe en la libreria")
+
+
     input("Presione cualquier tecla para volver al menu...")
-
-"""
-libreria = {
-    codigo1(str): {
-        titulo:(str)
-        autor:(str)
-        precio:int   
-    },
-
-    codigo2(str): {
-        titulo:(str)
-        autor:(str)
-        precio:int  
-}
-"""
-
-def menu():
-    while True:
-        print("** Librería **")
-        print("1. Insertar")
-        print("2. Consultar")
-        print("3. Salir")
-
-        print(">>> Opcion? ", end="")
-        try:
-            opcion = int(input())
-            if opcion < 1 or opcion > 3:
-                print("ERROR. Opción NO válida")
-                input("Presione cualquier tecla para volver al menu...")
-            return opcion
-            
-        except ValueError:
-            print("ERROR. Opción NO válida")
-            input("Presione cualquier tecla para volver al menu...")
-
-# PROGRAMA PRINCIPAL
-
-libreria = {}
-
-while True:
-    op = menu()
-    match op:
-        case 1:
-            libreria = Insertar(libreria)
-            guardar(libreria)
-        case 2:
-            Consultar(libreria)
-        case 3:
-            print("\n\nGracias por usar el software.\n")
-            break
